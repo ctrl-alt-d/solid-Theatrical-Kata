@@ -1,0 +1,6 @@
+﻿Factura per a BigCo
+  Terra baixa: 650,00 € (55 seients)
+  Pel davant i pel darrere: 580,00 € (35 seients)
+  Mar i cel: 500,00 € (40 seients)
+L'import a pagar és 1.730,00 €
+Heu guanyat 47 crèdits
