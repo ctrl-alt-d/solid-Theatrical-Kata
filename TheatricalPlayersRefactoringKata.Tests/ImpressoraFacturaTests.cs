@@ -20,7 +20,7 @@ public class ImpressoraFacturaTests
 
         var factura = new Factura(
             client: "BigCo", 
-            actuacions: [
+            representacions: [
                 new Representacio("terra-baixa", 55),
                 new Representacio("pel-davant-i-pel-darrere", 35),
                 new Representacio("mar-i-cel", 40)
@@ -42,7 +42,7 @@ public class ImpressoraFacturaTests
 
         var factura = new Factura(
             client: "BigCoII",
-            actuacions: [
+            representacions: [
                 new Representacio("el-cafe-de-la-marina", 53),
                 new Representacio("maria-rosa", 55)
             ]
