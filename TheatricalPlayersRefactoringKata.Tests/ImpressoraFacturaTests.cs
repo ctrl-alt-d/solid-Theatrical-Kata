@@ -26,8 +26,8 @@ public class ImpressoraFacturaTests
                 new Representacio("mar-i-cel", 40)
             ]);
 
-        var impressoraFactura = new ImpressoraFactura();
-        var resultat = impressoraFactura.Imprimir(factura, obres);
+        var impressoraFactura = new ImpressoraFactura(obres);
+        var resultat = impressoraFactura.Imprimir(factura);
 
         return Verifier.Verify(resultat);
     }
@@ -48,8 +48,8 @@ public class ImpressoraFacturaTests
             ]
         );
 
-        var impressoraFactura = new ImpressoraFactura();
+        var impressoraFactura = new ImpressoraFactura(obres);
 
-        Assert.Throws<Exception>(() => impressoraFactura.Imprimir(factura, obres));
+        Assert.Throws<Exception>(() => impressoraFactura.Imprimir(factura));
     }
 }

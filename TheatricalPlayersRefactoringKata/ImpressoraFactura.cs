@@ -4,9 +4,10 @@ using System.Globalization;
 
 namespace TheatricalPlayersRefactoringKata;
 
-public class ImpressoraFactura
+public class ImpressoraFactura(Dictionary<string, Obra> obres)
 {
-    public string Imprimir(Factura factura, Dictionary<string, Obra> obres)
+    private readonly Dictionary<string, Obra> obres = obres;
+    public string Imprimir(Factura factura)
     {
         var importTotal = 0;
         var creditsVolum = 0;
