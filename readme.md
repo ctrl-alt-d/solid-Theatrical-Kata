@@ -55,7 +55,7 @@ Cada client ha assistit a diverses representacions (`Representacio`) i el sistem
 
 - L’import detallat de cada obra
 - El cost total
-- Els crèdits de fidelització
+- Els punts de fidelització
 
 Hi ha diferents tipus d’obres teatrals. El codi inicial només sap calcular factures per a:
 

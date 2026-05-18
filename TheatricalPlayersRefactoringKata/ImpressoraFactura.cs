@@ -11,7 +11,7 @@ public class ImpressoraFactura(Dictionary<string, Obra> obres)
     public string Imprimir(Factura factura)
     {
         var importTotal = 0;
-        var creditsVolum = 0;
+        var puntsFidelitzacio = 0;
         var resultat = $"Factura per a {factura.Client}\n";
         CultureInfo informacioCultural = new("ca-ES");
 
@@ -41,12 +41,12 @@ public class ImpressoraFactura(Dictionary<string, Obra> obres)
                     throw new Exception("tipus desconegut: " + obra.Tipus);
             }
 
-            // afegeix crèdits per volum
-            creditsVolum += Math.Max(repre.Assistencia - 30, 0);
-            // afegeix crèdits extra per cada cinc assistents a una comèdia
+            // afegeix punts de fidelització
+            puntsFidelitzacio += Math.Max(repre.Assistencia - 30, 0);
+            // afegeix punts de fidelització extra per cada cinc assistents a una comèdia
             if (obra.Tipus == "comèdia")
             {
-                creditsVolum += repre.Assistencia / 5;
+                puntsFidelitzacio += repre.Assistencia / 5;
             }
 
             // imprimeix la línia per a aquesta comanda
@@ -54,7 +54,7 @@ public class ImpressoraFactura(Dictionary<string, Obra> obres)
             importTotal += importActual;
         }
         resultat += $"L'import a pagar és {(importTotal / 100m).ToString("C", informacioCultural)}\n";
-        resultat += $"Heu guanyat {creditsVolum} crèdits\n";
+        resultat += $"Heu guanyat {puntsFidelitzacio} punts de fidelització\n";
         return resultat;
     }
 }
