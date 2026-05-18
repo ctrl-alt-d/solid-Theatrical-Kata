@@ -6,19 +6,20 @@ namespace TheatricalPlayersRefactoringKata;
 
 public class ImpressoraFactura(Dictionary<string, Obra> obres)
 {
-    private readonly Dictionary<string, Obra> obres = obres;
+    private readonly Dictionary<string, Obra> _obres = obres;
+
     public string Imprimir(Factura factura)
     {
         var importTotal = 0;
         var creditsVolum = 0;
-        var resultat = string.Format("Factura per a {0}\n", factura.Client);
-        var informacioCultural = new CultureInfo("ca-ES");
+        var resultat = $"Factura per a {factura.Client}\n";
+        CultureInfo informacioCultural = new("ca-ES");
 
         foreach (var repre in factura.Representacions)
         {
             var importActual = 0;
 
-            var obra = obres[repre.IdObra];
+            var obra = _obres[repre.IdObra];
             switch (obra.Tipus)
             {
                 case "tragèdia":
@@ -45,15 +46,15 @@ public class ImpressoraFactura(Dictionary<string, Obra> obres)
             // afegeix crèdits extra per cada cinc assistents a una comèdia
             if (obra.Tipus == "comèdia")
             {
-                creditsVolum += (int)Math.Floor((decimal)repre.Assistencia / 5);
+                creditsVolum += repre.Assistencia / 5;
             }
 
             // imprimeix la línia per a aquesta comanda
-            resultat += String.Format(informacioCultural, "  {0}: {1:C} ({2} seients)\n", obra.Nom, Convert.ToDecimal(importActual / 100), repre.Assistencia);
+            resultat += $"  {obra.Nom}: {(importActual / 100m).ToString("C", informacioCultural)} ({repre.Assistencia} seients)\n";
             importTotal += importActual;
         }
-        resultat += String.Format(informacioCultural, "L'import a pagar és {0:C}\n", Convert.ToDecimal(importTotal / 100));
-        resultat += String.Format("Heu guanyat {0} crèdits\n", creditsVolum);
+        resultat += $"L'import a pagar és {(importTotal / 100m).ToString("C", informacioCultural)}\n";
+        resultat += $"Heu guanyat {creditsVolum} crèdits\n";
         return resultat;
     }
 }
